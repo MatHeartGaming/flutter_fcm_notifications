@@ -1,3 +1,10 @@
+# Environment variables
+.env
+
+# Firebase config files
+/ios/Runner/GoogleService-Info.plist
+/android/app/google-services.json
+
 # Miscellaneous
 *.class
 *.log
