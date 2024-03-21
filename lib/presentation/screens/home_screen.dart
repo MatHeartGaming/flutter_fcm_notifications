@@ -1,6 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:notifications_app/domain/entities/push_message.dart';
 import 'package:notifications_app/presentation/blocs/bloc/notifications_bloc.dart';
 
@@ -45,6 +46,9 @@ class _HomeView extends StatelessWidget {
           leading: notification.imageUrl != null
               ? _notificationImage(notification)
               : const SizedBox(),
+              onTap: () {
+                context.push('/push-details/${ notification.messageId }');
+              },
         );
       },
     );
