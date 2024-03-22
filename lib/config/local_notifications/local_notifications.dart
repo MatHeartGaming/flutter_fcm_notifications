@@ -24,4 +24,29 @@ class LocalNotifications {
       //onDidReceiveBackgroundNotificationResponse: onDidReceiveBackgroundNotificationResponse
     );
   }
+
+  static void showLocalNotification({
+    required int id,
+    String? title,
+    String? body,
+    String? data,
+  }) {
+    const androidDetails = AndroidNotificationDetails(
+      'channelId',
+      'channelName',
+      playSound: true,
+      sound: RawResourceAndroidNotificationSound(
+          'android_app_res_raw_notification'),
+      importance: Importance.defaultImportance,
+      priority: Priority.high,
+    );
+
+    const notificationDetails = NotificationDetails(
+      android: androidDetails,
+    );
+
+    final flutterNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    flutterNotificationsPlugin.show(id, title, body, notificationDetails,
+        payload: data);
+  }
 }
